@@ -12,9 +12,14 @@ class UserController extends Controller
 {
 
 
-    public function viewRegister(){
+    public function showLoginForm(){
 
-        return view();
+        return view('login');
+    }
+
+    public function showRegisterForm(){
+
+        return view('register');
     }
 
     # register dengan nama, email, password
