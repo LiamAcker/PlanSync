@@ -19,13 +19,14 @@ Route::get('/calendar', [CalendarController::class, 'index']);
 // User
 Route::get('/sign-in', [UserController::class, 'showLoginForm'])->name('sign-in');
 Route::post('/sign-in', [UserController::class, 'login']);
-Route::post('/sign-out', [UserController::class, 'logout']);
+Route::post('/sign-out', [UserController::class, 'logout'])->name('sign-out');
 
 Route::get('/sign-up', [UserController::class, 'showRegisterForm'])->name('sign-up');
 Route::post('/sign-up', [UserController::class, 'create']);
 
 
+
 // default
 Route::get('/', function () {
-    return view('core.sidebar');
+    return view('calendar');
 });

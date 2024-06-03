@@ -1,8 +1,22 @@
-<!DOCTYPE html>
-<html lang='en'>
-  <head>
-    <meta charset='utf-8' />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.13/index.global.min.js'></script>
+  <!-- <form action="{{route('add-reminder')}}" method="get">
+    <button type="submit" class="add">Add reminder</button>
+  </form> -->
+
+@extends('core.sidebar')
+
+@push('styles')
+<style>
+</style>
+@endpush
+
+@section('content')
+    <div id='calendar' class="h-100 w-100">
+
+    </div>
+@endsection
+
+@push('scripts')
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.13/index.global.min.js'></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -13,14 +27,4 @@
         calendar.render();
       });
     </script>
-  </head>
-  <body>
-  <form action="{{route('add-reminder')}}" method="get">
-    <button type="submit" class="add">Add reminder</button>
-  </form>
-    
-    <div id='calendar'></div>
-
-
-  </body>
-</html>
+@endpush
