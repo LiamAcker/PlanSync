@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('description_string')->nullable();
             $table->string('attachment_id')->nullable();
             $table->string('repeat_category')->nullable();
+            $table->dateTime('remind_datetime');
             $table->string('remind_year')->nullable();
             $table->string('remind_month')->nullable();
             $table->string('remind_day')->nullable();

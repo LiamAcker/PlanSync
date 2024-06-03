@@ -20,6 +20,7 @@ class Reminder extends Model
         'description_string',
         'attachment_id',
         'repeat_category',
+        'remind_datetime',
         'remind_year',
         'remind_month',
         'remind_day',
