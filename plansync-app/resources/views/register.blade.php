@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Sign Up</title>
 </head>
 <body>
-    <form method="POST" action="{{ route('sign-in') }}">
+    <form method="POST" action="{{ route('sign-up') }}">
         @csrf
         <h1>Register</h1>
 

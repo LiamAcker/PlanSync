@@ -15,8 +15,8 @@ Route::get('/calendar', [CalendarController::class, 'index']);
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
 
-Route::get('/sign-in', [UserController::class, 'showRegisterForm'])->name('sign-in');
-Route::post('/sign-in', [UserController::class, 'create']);
+Route::get('/sign-up', [UserController::class, 'showRegisterForm'])->name('sign-up');
+Route::post('/sign-up', [UserController::class, 'create']);
 
 
 // default
