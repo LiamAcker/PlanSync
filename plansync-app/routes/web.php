@@ -13,7 +13,7 @@ use App\Http\Controllers\UserController;;
 // Calendar
 Route::get('/add-reminder', [ReminderController::class, 'create'])->name('add-reminder');
 Route::post('/post-reminder', [ReminderController::class, 'store'])->name('post-reminder');
-Route::get('/fetch-reminders', [App\Http\Controllers\CalendarController::class, 'fetchReminders']);
+Route::get('/fetch-reminders', [CalendarController::class, 'fetchReminders']);
 Route::get('/calendar', [CalendarController::class, 'index']);
 
 // User

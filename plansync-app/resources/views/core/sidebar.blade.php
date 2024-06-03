@@ -30,17 +30,15 @@
         <nav id="sidebarMenu" class="collapse collapse-horizontal text-bg-dark overflow-auto vh-107">
             <!-- Your sidebar content goes here -->
             <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item"><a href="" class="nav-link text-white"> Option 1 </a></li>
-                <li class="nav-item"><a href="" class="nav-link text-white"> Option 1 </a></li>
-                <li class="nav-item"><a href="" class="nav-link text-white"> Option 1 </a></li>
-                <li class="nav-item"><a href="" class="nav-link text-white"> Option 1 </a></li>
+                <li class="nav-item"><a href="" class="nav-link text-white">Calendar</a></li>
+                <li class="nav-item"><a href="" class="nav-link text-white">List</a></li>
             </ul>
             <hr>
             <div class="dropdown m-1">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
                     <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
                     <!-- nama user -->
-                    <strong>mdo</strong> 
+                    <strong>Username</strong> 
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" data-popper-placement="top-start" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -34.6667px);">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
