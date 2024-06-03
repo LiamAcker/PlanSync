@@ -27,5 +27,5 @@ Route::post('/sign-up', [UserController::class, 'create']);
 
 // default
 Route::get('/', function () {
-    return view('welcome');
+    return view('core.sidebar');
 });

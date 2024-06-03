@@ -12,7 +12,6 @@
         });
         calendar.render();
       });
-
     </script>
   </head>
   <body>
