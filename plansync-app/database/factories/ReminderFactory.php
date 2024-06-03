@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Reminder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Reminder>
  */
@@ -21,9 +20,9 @@ class ReminderFactory extends Factory
             'title_string' => $this->faker->sentence,
             'description_string' => $this->faker->paragraph,
             'attachment_id' => null,
-            'repeat_category' => $this->faker->randomElement(['Year', 'Month', 'Day']),
+            'repeat_category' => $this->faker->randomElement(['Yearly', 'Monthly', 'Daily', "No Repeat"]),
             'remind_year' => '2024',
-            'remind_month' => '4',
+            'remind_month' => '6',
             'remind_day' => strval(rand(15, 30)),
             'remind_hour' => strval(rand(0, 23)),
             'remind_min' => strval(rand(0, 59)),
