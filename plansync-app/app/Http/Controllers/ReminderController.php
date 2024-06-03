@@ -16,7 +16,7 @@ class ReminderController extends Controller
 
     public function create()
     {
-        return view('/'); # create reminder page
+        return view('add-reminder'); # create reminder page
     }
 
     /**

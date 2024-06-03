@@ -4,9 +4,18 @@
     <title>Login</title>
 </head>
 <body>
-    <form method="POST" action="{{ route('login') }}">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <h1>Sign In</h1>
+    <form method="POST" action="{{ route('sign-in') }}">
         @csrf
-        <h1>Login</h1>
         <div>
             <label for="email">Email</label>
             <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
@@ -18,7 +27,7 @@
         </div>
 
         <div>
-            <button type="submit">Login</button>
+            <button type="submit">Sign In!</button>
         </div>
     </form>
 </body>

@@ -4,9 +4,9 @@
     <title>Sign Up</title>
 </head>
 <body>
-    <form method="POST" action="{{ route('sign-up') }}">
+    <form method="POST" action="{{route('sign-up') }}">
         @csrf
-        <h1>Register</h1>
+        <h1>Sign Up</h1>
 
         <div>
             <label for="fullname">Full Name</label>
@@ -35,7 +35,7 @@
 
 
         <div>
-            <button type="submit">Register</button>
+            <button type="submit">Sign Up!</button>
         </div>
     </form>
 </body>
