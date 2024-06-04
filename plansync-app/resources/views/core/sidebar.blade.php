@@ -12,40 +12,36 @@
         }
         #topNavbar{
             height: 7vh;
-            background-color: lightcoral;
+            background-color: whitesmoke;
         }
     </style>
 </head>
   <body>
     <nav id="topNavbar"class="navbar">
         <div class="container-fluid">
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-expanded="false" aria-controls="sidebarMenu">
-            Sidebar
+            <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-expanded="false" aria-controls="sidebarMenu">
+            =
             </button>
             <div id="pageTitle" class="fs-4 fw-bolder">PlanSync</div>
             <a href="{{route('add-reminder')}}" class="btn btn-light">Add Reminder</a>
     </div>
     </nav>
-    <div class="d-flex flex-nowrap">
+    <div class="d-flex flex-nowrap vh-100">
         <nav id="sidebarMenu" class="collapse collapse-horizontal text-bg-dark overflow-auto vh-107">
             <!-- Your sidebar content goes here -->
             <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item"><a href="" class="nav-link text-white">Calendar</a></li>
-                <li class="nav-item"><a href="" class="nav-link text-white">List</a></li>
+                <li class="nav-item"><a href="{{route('calendar')}}" class="nav-link text-white">Calendar</a></li>
             </ul>
             <hr>
-            <div class="dropdown m-1">
+            <div class="dropdown m-3">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
-                    <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
                     <!-- nama user -->
-                    <strong>Username</strong> 
+                    <strong>Linggar Nusantara</strong> 
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" data-popper-placement="top-start" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(0px, -34.6667px);">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                        <form action="POST" action="{{route('sign-out')}}">
-                            @csrf
+                        <form method="GET" action="{{route('sign-out')}}">
                             <button type="submit", class="dropdown-item">
                             Sign out
                             </button>

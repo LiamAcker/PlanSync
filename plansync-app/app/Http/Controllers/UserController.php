@@ -26,6 +26,8 @@ class UserController extends Controller
     # register dengan nama, email, password
     public function create(Request $request)
     {
+
+        // dd($request->all());
         $request->validate([
             'fullname' => 'required',
             'phone' => 'required|max:15',
@@ -42,7 +44,7 @@ class UserController extends Controller
         $user->save();
         
 
-        return response()->json($user, 201);
+        return redirect('/sign-in');
 
     }
 
@@ -55,30 +57,26 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-
-           return response()->json(['message' => 'Login successful', 200]);
-        //    return view('');
-        } else {
-            return redirect('sign-in')
-                ->withErrors(['credentials' => "Wrong email or password"])
-                ->withInput();
-        
-            //return response()->json(['message' => 'Invalid credentials'], 401);
+        // Attempt to log the user in
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // If login successful, redirect to their intended location
+            
+            if (Auth::check()){
+                return redirect()->intended('/calendar');
+            } else{
+                return redirect()
+                ->back()
+                ->withInput($request->only('email'))->withErrors(['email' => 'Failed to authenticate.']);
+            }
         }
+        return redirect()
+        ->back()
+        ->withInput($request->only('email'))->withErrors(['email' => 'These credentials do not match our records.']);
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        Auth::logout();
-    
-        $request->session()->invalidate();
-    
-        $request->session()->regenerateToken();
-        
-        echo('success logout');
+
         return redirect('/sign-in');
     }
 
@@ -89,7 +87,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect(('/'));
+        return redirect(('/sign-in'));
     }
 
 

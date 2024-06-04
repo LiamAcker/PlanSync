@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Reminder;
+use DateTime;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
@@ -25,26 +27,40 @@ class ReminderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request): Redirector
+    public function store(Request $request): RedirectResponse
     {
         //
+        $request->validate([
+            'reminder_name' => 'required',
+            'description' => 'required',
+            'repeat_category' => 'required',
+            'datetime' => 'required',
+            'priority_category' => 'required',
+        ]);
+        
+        
+
         $reminder = new Reminder;
-        $reminder->list_id = $request->list_id;
-        $reminder->user_id = Auth::user()->user_id;
-        $reminder->title_string = $request->title_string;
-        $reminder->description_string = $request->description_string;
-        $reminder->attachment_id = $request->attachment_id;
+
+        $datetime = new DateTime($request->datetime);
+
+        $reminder->reminder_list_id = 1;
+        $reminder->user_id = 7;
+        $reminder->title_string = $request->reminder_name;
+        $reminder->description_string = $request->description;
         $reminder->repeat_category = $request->repeat_category;
-        $reminder->remind_year = $request->remind_year;
-        $reminder->remind_month = $request->remind_month;
-        $reminder->remind_day = $request->repeat_day;
-        $reminder->remind_hour = $request->remind_hour;
-        $reminder->remind_min = $request->remind_min;
+        $reminder->remind_datetime = $request->datetime;
+        $reminder->remind_year = $datetime->format('Y');
+        $reminder->remind_month = $datetime->format('m');
+        $reminder->remind_day = $datetime->format('d');
+        $reminder->remind_hour = $datetime->format('H');
+        $reminder->remind_min = $datetime->format('i');
         $reminder->priority_category = $request->priority_category;
 
         $reminder->save();
 
-        return redirect('/'); # calendar page
+        return redirect('calendar'); # calendar page
+        return redirect()->route('reminders.index')->with('success', 'Reminder added successfully!');
     }
 
     /**
@@ -58,7 +74,7 @@ class ReminderController extends Controller
         //
         $reminder = Reminder::find($id);
 
-        return view('/edit', compact($reminder));
+        return view('edit-reminder', ['reminder' => $reminder]);
     }
 
     /**
@@ -68,26 +84,30 @@ class ReminderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id): Redirector
+    public function update(Request $request, $id): RedirectResponse
     {
         //
         $reminder = Reminder::find($id);
         
-        $reminder->list_id = $request->list_id;
-        $reminder->title_string = $request->title_string;
-        $reminder->description_string = $request->description_string;
-        $reminder->attachment_id = $request->attachment_id;
+        $datetime = new DateTime($request->datetime);
+        
+        $reminder->reminder_list_id = 1;
+        $reminder->user_id = 7;
+        $reminder->title_string = $request->reminder_name;
+        $reminder->description_string = $request->description;
         $reminder->repeat_category = $request->repeat_category;
-        $reminder->remind_year = $request->remind_year;
-        $reminder->remind_month = $request->remind_month;
-        $reminder->remind_day = $request->repeat_day;
-        $reminder->remind_hour = $request->remind_hour;
-        $reminder->remind_min = $request->remind_min;
+        $reminder->remind_datetime = $request->datetime;
+        $reminder->remind_year = $datetime->format('Y');
+        $reminder->remind_month = $datetime->format('m');
+        $reminder->remind_day = $datetime->format('d');
+        $reminder->remind_hour = $datetime->format('H');
+        $reminder->remind_min = $datetime->format('i');
         $reminder->priority_category = $request->priority_category;
+
 
         $reminder->save();
 
-        return redirect('/');
+        return redirect('calendar');
     }
 
     /**
@@ -96,13 +116,13 @@ class ReminderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id): Redirector
+    public function destroy($id): RedirectResponse
     {
         //
         $reminder = Reminder::find($id);
         $reminder->delete();
 
-        return redirect('/');
+        return redirect('calendar');
     }
 
     
